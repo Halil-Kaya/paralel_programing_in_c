@@ -1,0 +1,2 @@
+derleme ->  mpicc helloMPI.c -o helloMPI.x
+calistirma -> mpirun -oversubscribe -np 4 ./helloMPI.x 
