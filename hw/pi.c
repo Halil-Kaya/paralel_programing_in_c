@@ -31,6 +31,9 @@ int main(void)
         sum += f(x);
     }
     sum /= N;
+
+        
+
     printf(" pi sum: %1.10f\n",sum);
 
     if(rank != 0){
