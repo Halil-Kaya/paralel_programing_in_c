@@ -17,18 +17,7 @@ int main(void)
 
     printf("rank : %d size : %d\n",rank,size);
     
-    if(rank == 1){
-
-        /*
-        !!NOT BURDA SAYI GONDERMIYOR ONUN ADRESINI GONDERIYOR!
-        */
-
-        int gonderilecekOlanSayi = 10;
-        MPI_Send(&gonderilecekOlanSayi ,1,MPI_INT,0,100,COMM);
-
-    }
-
-    if(rank == 0){
+    if(rank == 2){
 
         int r1;
         //burda fikir yurutuyorum burda program asenkron calismiyor senkron olarak calisip bu satiri bekliyor
@@ -47,6 +36,19 @@ int main(void)
         printf("rank1 in gonderdigi sayi: %d",r1);
 
     }
+
+    if(rank == 1){
+
+        /*
+        !!NOT BURDA SAYI GONDERMIYOR ONUN ADRESINI GONDERIYOR!
+        */
+
+        int gonderilecekOlanSayi = 100;
+        MPI_Send(&gonderilecekOlanSayi ,1,MPI_INT,2,100,COMM);
+
+    }
+
+
 
 
     MPI_Finalize();
