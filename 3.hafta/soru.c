@@ -34,6 +34,7 @@ int main(void)
     if (rank == 0)
        printf("avg = %f\n", a/N);
 
+
     MPI_Finalize();
 
 }
