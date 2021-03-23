@@ -14,7 +14,7 @@ double appPI = 0.0;
 int main(void)
 {
 
-    MPI_Status status;
+    MPI_Status status; 
 
     MPI_Init(NULL, NULL);
 
@@ -31,10 +31,9 @@ int main(void)
         sum += f(x);
     }
     sum /= N;
+    
 
-        
-
-    printf(" pi sum: %1.10f\n",sum);
+    printf("rank %d in hesapladigi:  pi sum: %1.10f\n",rank,sum);
 
     if(rank != 0){
 
@@ -51,7 +50,6 @@ int main(void)
         printf("Yaklasik Pi : %1.10f\n",resultSum);
 
     }
-
 
     MPI_Finalize();
 }

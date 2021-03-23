@@ -17,6 +17,18 @@ int main(void)
 
     printf("rank : %d size : %d\n",rank,size);
     
+    if(rank == 1){
+
+        /*
+        !!NOT BURDA SAYI GONDERMIYOR ONUN ADRESINI GONDERIYOR!
+        */
+
+        int gonderilecekOlanSayi = 100;
+        MPI_Send(&gonderilecekOlanSayi ,1,MPI_INT,2,100,COMM);
+
+    }
+
+
     if(rank == 2){
 
         int r1;
@@ -37,16 +49,6 @@ int main(void)
 
     }
 
-    if(rank == 1){
-
-        /*
-        !!NOT BURDA SAYI GONDERMIYOR ONUN ADRESINI GONDERIYOR!
-        */
-
-        int gonderilecekOlanSayi = 100;
-        MPI_Send(&gonderilecekOlanSayi ,1,MPI_INT,2,100,COMM);
-
-    }
 
 
 
