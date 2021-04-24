@@ -16,7 +16,7 @@ void myReduceRecursive(int rank, int size,int *sayi,int q){
 
 
     int rankCheck = 0;
-
+    //rank check in amaci gonderenleri bulmak q = 2   rank : 2       size : 8
     for (int i = size - q; i >= 0; i -= q*2){
         if (rank == i){
             
@@ -25,7 +25,7 @@ void myReduceRecursive(int rank, int size,int *sayi,int q){
         }
     }
 
-    if (rankCheck){
+    if (rankCheck){//gonderen rank
 
         if(rank - q < 0){
             //islem artik bitebilir
@@ -34,8 +34,9 @@ void myReduceRecursive(int rank, int size,int *sayi,int q){
 
         MPI_Send(sayi, 1, MPI_INT, rank - q, 100, COMM);
         printf("<%d>ranki : %d olan ranki %d olana data gonderiyor\n",q,rank,rank-q);
+
     }
-    else{
+    else{//alan rank
 
         int data = 0;
         MPI_Recv(&data, 1, MPI_INT, rank + q, MPI_ANY_TAG, COMM, MPI_STATUS_IGNORE);
@@ -51,8 +52,6 @@ void myReduceRecursive(int rank, int size,int *sayi,int q){
 int main(void)
 {
 
-    int count = 3;
-
     MPI_Init(NULL, NULL);
 
     int rank, size, i;
@@ -67,7 +66,6 @@ int main(void)
     if(rank == 0){
         printf("sonuc:: %d",sayi);
     }
-
 
     MPI_Finalize();
 }
